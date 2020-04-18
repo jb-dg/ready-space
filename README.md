@@ -1,3 +1,16 @@
+## Ready Space ?
+
+Je suis développeur PHP plutôt orienté Backend et je développe des modules/extensions sur Magento 2 dans mon job actuel.
+Mon objectif est d'évoluer dans ce langage.
+C'est pourquoi, aujourd'hui, je lance le projet Ready Space pour apprendre le Framework Laravel !
+
+Pourquoi le nom "Ready Space" ? 
+Au moment où je redige ce README, je porte un tee-shirt de la Nasa avec l'inscription "Ready To Space" ... c'est tout simple... mais je trouve que ça exprime bien ma détermination pour me lancer dans l'apprentissage dans ce Framework.
+
+Que l'aventure commence !
+
+<i> ps: je ferai un update régulier du README pour détailler le projet au fil du temps ;) </i>
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
