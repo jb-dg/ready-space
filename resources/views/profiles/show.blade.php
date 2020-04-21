@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -7,8 +7,8 @@
             <img src="{{ asset('media/img-profile-user.jpg') }}" class="rounded-circle" width="170px">
         </div>
         <div class="col-8">
-            <div class="d-flex">
-                <div class="h4 mr-3 pt-2">jb-dg</div>
+            <div class="d-flex align-items-baseline">
+                <div class="h4 mr-3 pt-2">{{ $user->username }}</div>
                 <button class="btn btn-sm btn-primary">Follow</button>
             </div>
             <div class="d-flex mt-3">
@@ -17,7 +17,7 @@
                 <div class="mr-3"><strong>0</strong> Friends</div>
             </div>
             <div class="mt-3">
-                <div>Ready Space with Framework Laravel</div>
+                <div class="font-weight-bold">Ready Space with Framework Laravel</div>
                 <div>Ce n'est que le début !</div>
                 <div><strong>GitHub: </strong><a href="https://github.com/jb-dg">@jb-dg</a></div>
             </div>
