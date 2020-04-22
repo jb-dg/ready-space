@@ -17,9 +17,9 @@
                 <div class="mr-3"><strong>0</strong> Friends</div>
             </div>
             <div class="mt-3">
-                <div class="font-weight-bold">Ready Space with Framework Laravel</div>
-                <div>Ce n'est que le début !</div>
-                <div><strong>GitHub: </strong><a href="https://github.com/jb-dg">@jb-dg</a></div>
+                <div class="font-weight-bold">{{ $user->profile->title }}</div>
+                <div>{{ $user->profile->description }}</div>
+                <div><strong>Link: </strong><a href="{{ $user->profile->link }}">{{ $user->profile->link }}</a></div>
             </div>
         </div>
     </div>

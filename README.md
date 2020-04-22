@@ -4,12 +4,11 @@ Je suis développeur PHP plutôt orienté Backend et je développe des modules/e
 Mon objectif est d'évoluer dans ce langage.
 C'est pourquoi, aujourd'hui, je lance le projet Ready Space pour apprendre le Framework Laravel !
 
-Pourquoi le nom "Ready Space" ? 
-Au moment où je redige ce README, je porte un tee-shirt de la Nasa avec l'inscription "Ready To Space" ... c'est tout simple... mais je trouve que ça exprime bien ma détermination pour me lancer dans l'apprentissage dans ce Framework.
+Update 22/04/2020 : 
 
-Que l'aventure commence !
-
-<i> ps: je ferai un update régulier du README pour détailler le projet au fil du temps ;) </i>
+Pour le moment le projet Ready Space sera une mini copie d'instragram :
+- Création d'un compte
+- Création d'un post avec une image
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
