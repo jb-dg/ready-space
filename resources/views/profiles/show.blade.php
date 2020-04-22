@@ -12,7 +12,7 @@
                 <button class="btn btn-sm btn-primary">Follow</button>
             </div>
             <div class="d-flex mt-3">
-                <div class="mr-3"><strong>0</strong> Post</div>
+                <div class="mr-3"><strong>{{ $user->posts->count() }}</strong> Post</div>
                 <div class="mr-3"><strong>0</strong> Followers</div>
                 <div class="mr-3"><strong>0</strong> Friends</div>
             </div>
@@ -24,26 +24,11 @@
         </div>
     </div>
     <div class="row mt-5">
+        @foreach ($user->posts as $post)
         <div class="col-4">
-            <img src="{{ asset('media/img-1.jpg') }}" class="w-100">
+            <img src="{{ asset('storage') .'/'. $post->image }}" class="w-100">
         </div>
-        <div class="col-4">
-            <img src="{{ asset('media/img-2.jpg') }}" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('media/img-3.jpg') }}" class="w-100">
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-4">
-            <img src="{{ asset('media/img-4.jpg') }}" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('media/img-5.jpg') }}" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('media/img-6.jpg') }}" class="w-100">
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
