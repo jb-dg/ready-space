@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -16,6 +16,9 @@
                 <div class="mr-3"><strong>0</strong> Followers</div>
                 <div class="mr-3"><strong>0</strong> Friends</div>
             </div>
+            @can('update', $user->profile)
+            <a href="{{ route('profiles.edit', ['user' => $user->username]) }}" class="btn btn-outline-secondary m-3">Editer le profil</a>
+            @endcan
             <div class="mt-3">
                 <div class="font-weight-bold">{{ $user->profile->title }}</div>
                 <div>{{ $user->profile->description }}</div>
