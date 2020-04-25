@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row mt-4">
         <div class="col-4 text-center">
-            <img src="{{ asset('media/img-profile-user.jpg') }}" class="rounded-circle" width="170px">
+            <img src="{{ $user->profile->getImage() }}" class="rounded-circle w-100" style="max-width: 250px">
         </div>
         <div class="col-8">
             <div class="d-flex align-items-baseline">

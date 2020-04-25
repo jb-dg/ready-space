@@ -26,7 +26,6 @@ class PostController extends Controller
     	]);
 
     	$imagePath = request('image')->store('uploads', 'public');
-
         $img = Image::make(public_path("/storage/{$imagePath}"))->fit(1200,1200);
         $img->save();
 
