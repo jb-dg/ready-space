@@ -12,9 +12,9 @@
                 <follow-button profile-id="{{ $user->profile->id }}" follows="{{ $follows }}"></follow-button>
             </div>
             <div class="d-flex mt-3">
-                <div class="mr-3"><strong>{{ $user->posts->count() }}</strong> Post</div>
+                <div class="mr-3"><strong>{{ $user->posts->count() }}</strong> Posts</div>
                 <div class="mr-3"><strong>{{ $user->profile->followers->count() }}</strong> Followers</div>
-                <div class="mr-3"><strong>{{ $user->following->count() }}</strong> Friends</div>
+                <div class="mr-3"><strong>{{ $user->following->count() }}</strong> Followings</div>
             </div>
             @can('update', $user->profile)
             <a href="{{ route('profiles.edit', ['user' => $user->username]) }}" class="btn btn-outline-secondary m-3">Editer le profil</a>
