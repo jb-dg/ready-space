@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function welcome()
+    {
+        $users = auth()->user()->following->pluck('user_id');
+        $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(21);
+        return view('welcome', compact('posts'));
     }
 }

@@ -29,11 +29,11 @@ class PostController extends Controller
     {
     	$data = request()->validate([
     		'caption' => ['required', 'string'],
-    		'image' => ['required', 'image'],
+    		'image' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
     	]);
 
     	$imagePath = request('image')->store('uploads', 'public');
-        $img = Image::make(public_path("/storage/{$imagePath}"))->fit(1200,1200);
+        $img = Image::make(public_path("/storage/{$imagePath}"))->fit(5000,6000);
         $img->save();
 
     	auth()->user()->posts()->create([

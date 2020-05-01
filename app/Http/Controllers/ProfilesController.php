@@ -41,12 +41,12 @@ class ProfilesController extends Controller
     		'title' => 'required',
     		'description' => 'required',
     		'link' => 'required|url',
-            'image' => 'sometimes|image|max:3000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     	]);
 
         if (request('image')) {
             $imagePath = request('image')->store('avatars', 'public');
-            $img = Image::make(public_path("/storage/{$imagePath}"))->fit(800,800);
+            $img = Image::make(public_path("/storage/{$imagePath}"))->fit(3000,3000);
             $img->save();
 
             auth()->user()->profile->update(array_merge(
