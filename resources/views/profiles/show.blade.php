@@ -27,6 +27,12 @@
         </div>
     </div>
     <div class="row mt-5">
+        <div class="col-sm-12">  @if(session()->get('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}  
+    </div>
+  @endif
+</div>
         @foreach ($user->posts as $post)
         <div class="col-lg-4 col-sm-6 mb-4">
             <div class="card ">
@@ -42,7 +48,15 @@
                         <strong>{{ $post->user->username }}</strong>
                     </h4>
                     <p class="card-text">{{ $post->caption }}</p>
-                    <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-primary">Voir l'annonce</a>
+                    
+                    @can('update', $user->profile)
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                    <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-outline-secondary m-3">modifier annonce</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    @endcan
                 </div>
             </div>
         </div>

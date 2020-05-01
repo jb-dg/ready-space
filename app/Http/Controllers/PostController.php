@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
@@ -29,7 +30,7 @@ class PostController extends Controller
     {
     	$data = request()->validate([
     		'caption' => ['required', 'string'],
-    		'image' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+    		'image' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:100000",
     	]);
 
     	$imagePath = request('image')->store('uploads', 'public');
@@ -47,5 +48,43 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show', compact('post'));
+    }
+
+    public function edit(Post $post, User $user)
+    {
+        if ($user->id = $post->user_id) {
+            return view('posts.edit', compact('post'));
+        }
+    }
+
+    public function update(Post $post)
+    {
+        $data = request()->validate([
+            'caption' => ['required', 'string'],
+            'image' => "sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:100000",
+        ]);
+
+        if (request('image')) {
+            $imagePath = request('image')->store('uploads', 'public');
+            $img = Image::make(public_path("/storage/{$imagePath}"))->fit(3000,3000);
+            $img->save();
+
+            $post->update(array_merge(
+                $data,
+                ['image' => $imagePath]
+            ));
+        }else{
+            $post->update($data);
+        }
+
+        return redirect()->route('profiles.show', ['user' => auth()->user()])->with('success','Annonce mis à jour !');; 
+    }
+
+    public function destroy(Post $post, User $user)
+    {
+        if ($user->id = $post->user_id) {
+            $post->delete();
+            return redirect()->route('profiles.show', ['user' => auth()->user()])->with('success','Annonce supprimé !');; 
+        }
     }
 }

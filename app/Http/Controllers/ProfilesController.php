@@ -41,7 +41,7 @@ class ProfilesController extends Controller
     		'title' => 'required',
     		'description' => 'required',
     		'link' => 'required|url',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:50000'
     	]);
 
         if (request('image')) {
