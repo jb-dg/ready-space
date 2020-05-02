@@ -51,10 +51,20 @@
                     
                     @can('update', $user->profile)
                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                    <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-outline-secondary m-3">modifier annonce</a>
+                        <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-secondary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                            <span class="text">Modifier</span>
+                        </a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            <span class="text">Supprimer</span>
+                        </button>
                     </form>
                     @endcan
                 </div>

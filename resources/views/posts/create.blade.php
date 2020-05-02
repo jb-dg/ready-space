@@ -1,18 +1,21 @@
 @extends('layouts.app')
+@section('sidebar')
+      @include('layouts.sidebar')
+@endsection
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Créer un post') }}</div>
+                <div class="card-header">{{ __('Créer une annonce') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
-                            <label for="caption" >{{ __('Caption') }}</label>
+                            <label for="caption" >{{ __('Titre') }}</label>
                             <input id="caption" type="text" class="form-control @error('caption') is-invalid @enderror" name="caption" value="{{ old('caption') }}" required autocomplete="caption" autofocus>
 
                             @error('caption')
@@ -34,7 +37,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Créer mon post') }}
+                            {{ __('Publier mon annonce') }}
                         </button>
                     </form>
                 </div>
