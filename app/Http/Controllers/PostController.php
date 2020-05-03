@@ -29,7 +29,8 @@ class PostController extends Controller
     public function store()
     {
     	$data = request()->validate([
-    		'caption' => ['required', 'string'],
+    		'title' => ['required', 'string'],
+            'caption' => ['required', 'string'],
     		'image' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:100000",
     	]);
 
@@ -38,7 +39,8 @@ class PostController extends Controller
         $img->save();
 
     	auth()->user()->posts()->create([
-    		'caption' => $data['caption'],
+    		'title' => $data['title'],
+            'caption' => $data['caption'],
     		'image' => $imagePath
     	]);
 
@@ -60,6 +62,7 @@ class PostController extends Controller
     public function update(Post $post)
     {
         $data = request()->validate([
+            'title' => ['required', 'string'],
             'caption' => ['required', 'string'],
             'image' => "sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:100000",
         ]);

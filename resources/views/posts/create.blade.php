@@ -15,8 +15,19 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="caption" >{{ __('Titre') }}</label>
-                            <input id="caption" type="text" class="form-control @error('caption') is-invalid @enderror" name="caption" value="{{ old('caption') }}" required autocomplete="caption" autofocus>
+                            <label for="title" >{{ __('Titre') }}</label>
+                            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+
+                            @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="caption" >{{ __('Description') }}</label>
+                            <textarea id="caption" type="text" class="form-control @error('caption') is-invalid @enderror" name="caption" value="{{ old('caption')}}" required autocomplete="caption" autofocus>{{ old('caption')}}</textarea>
 
                             @error('caption')
                                 <span class="invalid-feedback" role="alert">

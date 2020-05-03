@@ -20,7 +20,7 @@
                      <hr>
                 
                     <h4 class="card-title">
-                        <strong>{{ $post->user->username }}</strong>
+                        <strong>{{ $post->title }}</strong>
                     </h4>
                     <p class="card-text">{{ $post->caption }}</p>
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-primary">Voir l'annonce</a>
