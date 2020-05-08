@@ -27,9 +27,29 @@
                         </div>
                         <div class="form-group">
                             <label for="caption" >{{ __('Description') }}</label>
-                            <textarea id="caption" type="text" class="form-control @error('caption') is-invalid @enderror" name="caption" value="{{ old('caption') ?? $post->caption }}" required autocomplete="caption" autofocus></textarea>
+                            <textarea id="caption" type="text" class="form-control @error('caption') is-invalid @enderror" name="caption" value="{{ old('caption') ?? $post->caption }}" required autocomplete="caption" autofocus>{{ old('caption') ?? $post->caption }}</textarea>
 
                             @error('caption')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category_id">Category</label>
+                            <select class="form-control" name="category_id" required>
+                                <option value="">Selectionnez une catégorie</option>
+                               @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id === $post->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    @if ($category->children)
+                                        @foreach ($category->children as $child)
+                                            <option value="{{ $child->id }}" {{ $child->id === $post->category_id ? 'selected' : '' }}>&nbsp;&nbsp;{{ $child->name }}</option>
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('category_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

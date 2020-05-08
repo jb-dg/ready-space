@@ -37,8 +37,30 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="category_id">Category</label>
+                            <select class="form-control" name="category_id" required>
+                                <option value="">Selectionnez une catégorie</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ $category->id === old('category_id') ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                    @if ($category->children)
+                                        @foreach ($category->children as $child)
+                                            <option value="{{ $child->id }}" {{ $child->id === old('category_id') ? 'selected' : '' }}>&nbsp;&nbsp;{{ $child->name }}</option>
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="validatedCustomFile" >
+                                <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="validatedCustomFile" reqauired>
                                 <label class="custom-file-label" for="validatedCustomFile">Choisir une image</label>
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">

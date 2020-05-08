@@ -16,7 +16,9 @@
                             <img src="{{ $post->user->profile->getImage() }}" class="rounded-circle" width="45px" height="45px">
                             <strong>{{ '@'.$post->user->username }}</strong>
                         </a>
-                        | <small style="float: right;" class="text-muted">{{ $post->created_at->format('d/m/Y à H:m') }}</small>
+                        <p class="text-muted"><small style="float: right;" class="text-muted">{{ $post->category ? $post->category->name : 'Uncategorized' }}
+                        | {{ $post->created_at->format('d/m/Y à H:m') }}</small></p>
+                        <br>
                      <hr>
                 
                     <h4 class="card-title">

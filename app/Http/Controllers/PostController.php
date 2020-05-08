@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Post;
 use App\User;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -23,15 +24,17 @@ class PostController extends Controller
 
     public function create()
     {
-    	return view('posts.create');
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+    	return view('posts.create', compact('categories'));
     }
 
     public function store()
     {
     	$data = request()->validate([
     		'title' => ['required', 'string'],
-            'caption' => ['required', 'string'],
-    		'image' => "required|image|mimes:jpeg,png,jpg,gif,svg|max:100000",
+            'caption' => ['required', 'string','min:3'],
+            'category_id' => ['required', 'numeric'],
+    		'image' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:100000']
     	]);
 
     	$imagePath = request('image')->store('uploads', 'public');
@@ -41,7 +44,8 @@ class PostController extends Controller
     	auth()->user()->posts()->create([
     		'title' => $data['title'],
             'caption' => $data['caption'],
-    		'image' => $imagePath
+    		'image' => $imagePath,
+            'category_id' => $data['category_id'],
     	]);
 
     	return redirect()->route('profiles.show', ['user' => auth()->user()]);
@@ -55,7 +59,8 @@ class PostController extends Controller
     public function edit(Post $post, User $user)
     {
         if ($user->id = $post->user_id) {
-            return view('posts.edit', compact('post'));
+            $categories = Category::with('children')->whereNull('parent_id')->get();
+            return view('posts.edit', compact('post' , 'categories'));
         }
     }
 
@@ -63,8 +68,9 @@ class PostController extends Controller
     {
         $data = request()->validate([
             'title' => ['required', 'string'],
-            'caption' => ['required', 'string'],
-            'image' => "sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:100000",
+            'caption' => ['required', 'string', 'min:3'],
+            'category_id' => ['required', 'numeric'],
+            'image' => ['sometimes','image','mimes:jpeg,png,jpg,gif,svg','max:100000'],
         ]);
 
         if (request('image')) {
