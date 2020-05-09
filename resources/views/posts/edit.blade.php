@@ -2,7 +2,7 @@
 @section('sidebar')
       @include('layouts.sidebar')
 @endsection
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/uploadImage.css') }}">
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -55,20 +55,27 @@
                                 </span>
                             @enderror
                         </div>
-
                         <hr>
-                        <img src="{{ old('image') ?? asset('storage').'/'.$post->image }}" class="w-100" height="500px"><br><br>
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="validatedCustomFile" >
-                                <label class="custom-file-label" for="validatedCustomFile">Choisir une image</label>
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                         <div class="form-group">
+                        <div class="image-upload-post mx-auto d-block" id="uploadImage" >
+                            <label for="imgInp">
+                                <img id="imgMove"  src="{{ old('image') ?? asset('storage').'/'.$post->image }}" 
+                                    class="img-post" style="cursor:pointer; " >
+                                   <div class="overlay" >
+                                    <div href="#" class="icon">
+                                      <i class="far fa-plus-square"></i>
+                                    </div>
+                                </div>
+                            </label>
+                            <input type="file" name="image" id="imgInp" style="cursor: pointer;  display: none"/>
+                        <input type="submit" id="Up" style="display: none;" />
+                        @error('image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                         </div>
+                    </div>
                         <button type="submit" class="btn btn-primary">
                             {{ __('modifier mon post') }}
                         </button>
@@ -78,4 +85,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/uploadImage.js') }}"></script>
 @endsection
