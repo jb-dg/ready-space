@@ -53,15 +53,15 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('profiles.edit', ['user' => Auth::user()->username]) }}">
             <i class="fas fa-fw fa-wrench fa-sm fa-fw mr-2 text-gray-400"></i>
-            <span>Réglages du compte</span>
+            <span>Réglages du profile</span>
           </a>
         </li>
 
          <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ route('user.edit', ['user' => Auth::user()->username]) }}">
             <i class="fas fa-fw fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
-            <span>Réglages Dashboard</span>
+            <span>Réglages du compte</span>
           </a>
         </li>
 

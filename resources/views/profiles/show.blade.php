@@ -27,12 +27,13 @@
         </div>
     </div>
     <div class="row mt-5">
-        <div class="col-sm-12">  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}  
-    </div>
-  @endif
-</div>
+        <div class="col-sm-12"> 
+            @if(session()->get('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}  
+                </div>
+            @endif
+        </div>
         @foreach ($user->posts as $post)
         <div class="col-lg-4 col-sm-6 mb-4">
             <div class="card ">

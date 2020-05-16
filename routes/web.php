@@ -35,3 +35,7 @@ Route::delete('/posts/{post}/destroy', 'PostController@destroy')->name('posts.de
 Route::post('/follows/{profile}', 'FollowController@store')->name('follows.store');
 
 Route::resource('category', 'CategoryController');
+
+Route::get('/account/{user}/edit', 'UserController@edit')->name('user.edit');
+Route::patch('/account/{user}', 'UserController@update')->name('user.update');
+Route::patch('/account/password/{user}', 'UserController@changePassword')->name('user.changepassword');

@@ -86,14 +86,14 @@ class PostController extends Controller
             $post->update($data);
         }
 
-        return redirect()->route('profiles.show', ['user' => auth()->user()])->with('success','Annonce mis à jour !');; 
+        return redirect()->route('profiles.show', ['user' => auth()->user()])->with('success','Annonce mis à jour !');
     }
 
     public function destroy(Post $post, User $user)
     {
         if ($user->id = $post->user_id) {
             $post->delete();
-            return redirect()->route('profiles.show', ['user' => auth()->user()])->with('success','Annonce supprimé !');; 
+            return redirect()->route('profiles.show', ['user' => auth()->user()])->with('success','Annonce supprimé !');
         }
     }
 }
