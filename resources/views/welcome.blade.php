@@ -16,7 +16,7 @@
                             <img src="{{ $post->user->profile->getImage() }}" class="rounded-circle" width="45px" height="45px">
                             <strong>{{ '@'.$post->user->username }}</strong>
                         </a>
-                        <p class="text-muted"><small style="float: right;" class="text-muted">{{ $post->category ? $post->category->name : 'Uncategorized' }}
+                        <p class="text-muted"><small style="float: right;" class="text-muted">
                         | {{ $post->created_at->format('d/m/Y à H:m') }}</small></p>
                         <br>
                      <hr>
@@ -24,7 +24,7 @@
                     <h4 class="card-title">
                         <strong>{{ $post->title }}</strong>
                     </h4>
-                    <p class="card-text">{{ $post->caption }}</p>
+                    <p class="card-text">{{ $post->category ? $post->category->name : 'Uncategorized' }}</p>
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-primary">Voir l'annonce</a>
                 </div>
             </div>

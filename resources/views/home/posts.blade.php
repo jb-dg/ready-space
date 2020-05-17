@@ -3,46 +3,48 @@
       @include('layouts.sidebar')
 @endsection
 @section('content')
+
 <div class="container">
-<div class="row mt-5">
- @foreach ($user->posts as $post)
-        <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card ">
-                    <div class="card-body">
-                            <a href="{{ route('profiles.show', ['user' => $post->user->username]) }}">
-                                <img src="{{ $post->user->profile->getImage() }}" class="rounded-circle" width="45px" height="45px">
-                                <strong>{{ '@'.$post->user->username }}</strong>
-                            </a>
-                            | <small style="float: right;" class="text-muted">{{ $post->created_at->format('d/m/Y à H:m') }}</small>
-                         <hr>
-                    
-                        <h4 class="card-title">
-                            <strong>{{ $post->user->username }}</strong>
-                        </h4>
-                        <p class="card-text">{{ $post->caption }}</p>
-                        
-                        @can('update', $user->profile)
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                            <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-secondary btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-arrow-right"></i>
-                                </span>
-                                <span class="text">Modifier</span>
-                            </a>
-                        @csrf
-                        @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Supprimer</span>
-                            </button>
-                        </form>
-                        @endcan
+    <div class="container-fluid">
+        <h1 class="h3 mb-2 text-gray-800">Mes annonces</h1>
+        <br>
+        @include('flash-message')
+        <div class="row">
+            <div class="col-lg-12">
+                @foreach ($user->posts as $post)
+                    <!-- Default Card Example -->
+                    <div class="card mb-4 ">
+                        <div class="card-header">
+                            {{ $post->title }} <small>- publié le : {{ $post->created_at->format('d/m/Y à H:m') }}</small>
+                        </div>
+                        <div class="card-body">
+                            <div class="content-card text-left">
+                                {{ $post->caption }}
+                            </div>
+                            <div class="action-card  text-right">
+                            @can('update', $user->profile)
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                    <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn  btn-secondary btn-icon-split btn-circle">
+                                        <span class="icon text-white-100">
+                                            <i class="far fa-edit"></i> 
+                                        </span>
+                                    </a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-circle">
+                                        <span class="icon text-white-100">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        
+                                    </button>
+                                </form>
+                            @endcan
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
         </div>
-        @endforeach
     </div>
 </div>
 @endsection
