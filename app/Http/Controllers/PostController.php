@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -33,6 +32,8 @@ class PostController extends Controller
     	$data = request()->validate([
     		'title' => ['required', 'string'],
             'caption' => ['required', 'string','min:3'],
+            'city' => ['required', 'string','min:3'],
+            'postal_code' => ['required', 'numeric'],
             'category_id' => ['required', 'numeric'],
     		'image' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:100000']
     	]);
@@ -44,11 +45,12 @@ class PostController extends Controller
     	auth()->user()->posts()->create([
     		'title' => $data['title'],
             'caption' => $data['caption'],
+            'city' => $data['city'],
+            'postal_code' => $data['postal_code'],
     		'image' => $imagePath,
-            'category_id' => $data['category_id'],
+            'category_id' => $data['category_id']
     	]);
 
-    	 //redirect()->route('profiles.show', ['user' => auth()->user()]);
         return redirect()->route('home.posts', ['user' => auth()->user()->username])
             ->with('success','Annonce publié !');;
     }
@@ -71,6 +73,8 @@ class PostController extends Controller
         $data = request()->validate([
             'title' => ['required', 'string'],
             'caption' => ['required', 'string', 'min:3'],
+            'city' => ['required', 'string','min:3'],
+            'postal_code' => ['required', 'numeric'],
             'category_id' => ['required', 'numeric'],
             'image' => ['sometimes','image','mimes:jpeg,png,jpg,gif,svg','max:100000'],
         ]);

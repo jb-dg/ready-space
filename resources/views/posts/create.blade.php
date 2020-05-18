@@ -57,6 +57,27 @@
                                 </span>
                             @enderror
                         </div>
+
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="city">Ville</label>
+                              <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
+                            @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            </div>
+                            <div class="form-group col-md-2">
+                              <label for="postal_code">CP</label>
+                              <input type="text" value="{{ old('postal_code')}}" class="form-control @error('postal_code') is-invalid @enderror" id="postal_code" name="postal_code">
+                            </div>
+                            @error('postal_code')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                          </div>
                         <hr>
                         <div class="form-group">
                             <label>Choisir une image</label>
