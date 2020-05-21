@@ -38,10 +38,10 @@ class ProfilesController extends Controller
     public function update(User $user)
     {
     	$data = request()->validate([
-    		'title' => 'required',
-    		'description' => 'required',
-    		'link' => 'required|url',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:50000'
+    		'title' => ['required'],
+    		'description' => ['required'],
+    		'link' => ['required','url'],
+            'image' => ['sometimes','image','mimes:jpeg,png,jpg,gif,svg','max:50000']
     	]);
 
         if (request('image')) {
