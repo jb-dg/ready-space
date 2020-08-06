@@ -31,6 +31,7 @@ Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
 Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
 Route::patch('/posts/{post}', 'PostController@update')->name('posts.update');
 Route::delete('/posts/{post}/destroy', 'PostController@destroy')->name('posts.destroy');
+Route::get('/search', 'PostController@search')->name('posts.search');
 
 Route::post('/follows/{profile}', 'FollowController@store')->name('follows.store');
 

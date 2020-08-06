@@ -102,4 +102,22 @@ class PostController extends Controller
             return redirect()->route('home.posts', ['user' => auth()->user()->username])->with('success','Annonce supprimé !');
         }
     }
+
+    public function search(Post $post)
+    {
+        try {
+            $validate = request()->validate([
+                'q' => ['required', 'string', 'min:3']
+            ]);
+            $q = request()->input('q');
+
+            $posts = $post->where('title', 'like', '%'.$q.'%')
+                ->orWhere('caption', 'like', '%'.$q.'%')
+                ->orWhere('city', 'like', '%'.$q.'%')
+                ->latest()->paginate(2);
+        } catch (ModelNotFoundException $exception) {
+            return back()->withInput()->with('error', $exception->getMessage());
+        }
+        return view('posts.search', compact('posts'));
+    }
 }
