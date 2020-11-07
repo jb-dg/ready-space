@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -35,8 +35,6 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        //$users = auth()->user()->following->pluck('user_id');
-        //$posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(21);
         $posts = Post::latest()->paginate(21);
         return view('welcome', compact('posts'));
     }

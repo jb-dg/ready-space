@@ -34,7 +34,7 @@
         <div id="content">
 
           <!-- Topbar -->
-          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
 
              <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -109,7 +109,7 @@
 
           </nav>
           <!-- End of Topbar -->
-            <main class="py-4">
+            <main class="py-0">
                 @yield('content')
             </main>
         </div>

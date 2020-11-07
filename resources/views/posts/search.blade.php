@@ -3,10 +3,14 @@
 @section('content')
 @include('layouts.banner')
 <!-- Page Content -->
-<div class="container">
-
-    <!-- Page Heading -->
-    <h1 class="my-4">Dernières annonces</h1>
+<div class="container my-4">
+      @if (request()->input('q'))
+    <h3 >
+        <strong>{{ $posts->total() }} résultat(s) </strong> 
+        pour la recherche 
+        <strong><i>"{{ request()->q }}"</i></strong>
+    </h3>
+  @endif
 
     <div class="row">
         @foreach ($posts as $post)

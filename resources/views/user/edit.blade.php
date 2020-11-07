@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="container">
+	<div class="container py-4">
 		@include('flash-message')
     	<div class="card">
         	<div class="card-header">{{ __('Modifier l\'adresse E-Mail') }}</div>
