@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Ready Space') }}</title>
+    <title>{{ config('app.name', 'Toolsy') }}</title>
 
     <!-- Styles -->
     
@@ -42,7 +42,7 @@
             </button>
             <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('svg/rocket-icon.svg') }}" width="35px" class="pr-3" style="border-right: solid 1px #333;">
-                    <span class="pl-3">Ready Space</span>
+                    <span class="pl-3">Toolsy</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -119,7 +119,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2019</span>
+              <span>Toolsy &copy; 2020</span>
             </div>
           </div>
         </footer>

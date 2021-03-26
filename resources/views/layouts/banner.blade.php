@@ -1,5 +1,5 @@
  <!-- Masthead -->
-  <header class="masthead text-white text-center">
+  <header class="masthead text-white text-center" style=" background: url('../img/masthead.jpg') no-repeat center center;">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">

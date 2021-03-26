@@ -1,0 +1,20 @@
+{
+    "E-Mail Address" : "Email",
+    "Password" : "Mot de passe",
+    "Forgot Your Password?" : "Mot de passe oublié ?",
+    "Login" : "Se connecter",
+    "Register" : "S'inscrire",
+    "Name" : "Nom et prenom",
+    "Username" : "Nom d'utilisateur",
+    "Confirm Password" : "Confirmer le mot de passe",
+    "Reset Password" : "Réinitialiser votre mot de passe",
+    "Send Password Reset Link" : "Envoyer la demande",
+    "Please confirm your password before continuing." : "Veuillez confirmer votre mot de passe avant de continuer.",
+    "You are receiving this email because we received a password reset request for your account." : "Vous recevez cet e-mail car nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.",
+    "This password reset link will expire in" : "Ce lien de réinitialisation du mot de passe expirera dans",
+    "If you did not request a password reset, no further action is required." : "Si vous n'avez pas fait cette demande, ignorez cet email.",
+    "Regards" : "Cordialement",
+    "Hello!" : "Bonjour !",
+    "If you’re having trouble clicking the 'Réinitialiser votre mot de passe' button, copy and paste the URL below into your web browser:" : "Si vous ne parvenez pas à cliquer sur le bouton 'Réinitialiser votre mot de passe', copiez et collez l'URL ci-dessous dans votre navigateur Web:",
+    "Reset Password Notification" : "Notication : Réinitialiser votre mot de passe Toolsy"
+}
